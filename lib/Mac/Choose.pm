@@ -10,7 +10,7 @@ our $executable_path = "choose";
 our $VERSION = 1;
 our @EXPORT_OK;
 
-sub choose {
+sub choose(@) {
    my @choices = @_
    	 or return undef;
 
