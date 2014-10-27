@@ -7,7 +7,7 @@ use warnings;
 use IPC::Open2 qw(open2);
 
 our $executable_path = "choose";
-
+our $VERSION = 1;
 our @EXPORT_OK;
 
 sub choose {
@@ -64,7 +64,7 @@ handles the shelling out to the process via IPC::Open2.
 =head2 Function
 
 This module exports one function on request, or you can call
-it fully qualified
+it fully qualified.
 
 =over
 
@@ -108,7 +108,7 @@ and/or modify it under the same terms as Perl itself.
 
 The choose command line utility itself is copyright Tiny Robot Software.
 Neither Mark Fowler nor this Perl library is associated with the choose
-command line utility or Tiny Robot Sofrware.
+command line utility or Tiny Robot Software.
 
 =head1 SEE ALSO
 
