@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More tests => 1;
 
 use Mac::Choose qw(choose);
 
@@ -13,4 +13,3 @@ my $answer = choose "please wait","do not press anything","this dialog should cl
 is $answer, "please wait";
 
 close $fh;
-done_testing;
