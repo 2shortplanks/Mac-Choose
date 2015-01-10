@@ -5,9 +5,12 @@ use strict;
 use warnings;
 
 use IPC::Open2 qw(open2);
+use File::ShareDir qw(dist_file);
 
-our $executable_path = "choose";
-our $VERSION = 1;
+# use the executable that shipped with this module
+our $executable_path = dist_file("Mac-Choose","choose");
+
+our $VERSION = 2;
 our @EXPORT_OK;
 
 sub choose(@) {
@@ -52,14 +55,21 @@ Mac::Choose - make a choice with the choose command line util
 
 =head1 DESCRIPTION
 
-C<choose> is a commerical commandline utility for OS X from
+C<choose> is a commercial commandline utility for OS X from
 Tiny Robot Software that shows a simple fuzzy-matching GUI for
 selecting from one of several options.
 
    http://tinyrobotsoftware.com/choose/
 
 This module is a really really thin wrapper around it that
-handles the shelling out to the process via IPC::Open2.
+handles installing the command line utility and provides
+a function to do the shelling out to C<choose> via IPC::Open2.
+
+While installing this module installs a copy of choose, if
+you continue to use this code beyond the time unlimited trial
+you should purchase a license from Tiny Robot Software
+
+  https://sites.fastspring.com/tinyrobotsoftware/instant/choose
 
 =head2 Function
 
@@ -78,11 +88,12 @@ the selection (by hitting ESC / clicking outside the dialog.)
 
 =head2 Configuring
 
-This module assumes that the C<choose> command line executable
-has been downloaded and installed in your path.  If you've
-installed C<choose> somewhere outside of your path, you can use
-the L<$Mac::Choose::executable_path> to override the path to
-the executable.
+This module uses the copy of C<choose> distributed with the
+module distribution by default.  If you've
+installed C<choose> somewhere else and you want to use that,
+you can use the L<$Mac::Choose:
+:executable_path> to
+override the path to the executable.
 
    local $Mac::Choose::executable_path = "/stuff/bin/choose";
    my $char = choose "Buffy","Willow","Xander","Tara","Oz";
@@ -108,7 +119,9 @@ and/or modify it under the same terms as Perl itself.
 
 The choose command line utility itself is copyright Tiny Robot Software.
 Neither Mark Fowler nor this Perl library is associated with the choose
-command line utility or Tiny Robot Software.
+command line utility or Tiny Robot Software (though Tiny Robot Software
+did give permission for choose to be distributed with this module
+when asked.)
 
 =head1 SEE ALSO
 

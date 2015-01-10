@@ -4,6 +4,12 @@ use strict;
 use warnings;
 
 use Test::More tests => 1;
+use File::Spec::Functions qw(:ALL);
+use Findbin;
+use Test::File::ShareDir (
+    -root => catdir($FindBin::Bin, updir),
+    -share => { -dist => { "Mac-Choose" => "share" } },
+);
 
 use Mac::Choose qw(choose);
 
